@@ -13,7 +13,7 @@ npm i sonar-scanner --save-dev
 
 ```json
 {
-  "script": {
+  "scripts": {
     "sonar-scanner": "node_modules/sonar-scanner/bin/sonar-scanner"
   }
 }
