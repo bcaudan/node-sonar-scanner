@@ -2,10 +2,19 @@
   "name": "sonar-scanner",
   "version": "1.0.0",
   "description": "Wrap sonar-scanner as a node module",
+  "keywords": ["sonar", "scanner"],
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bcaudan/node-sonar-scanner"
+  },
+  "bugs": {
+    "url": "https://github.com/bcaudan/node-sonar-scanner/issues"
+  },
+  "homepage": "https://github.com/bcaudan/node-sonar-scanner",
   "author": "Bastien Caudan",
   "license": "MIT"
 }
