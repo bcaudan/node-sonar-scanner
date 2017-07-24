@@ -1,6 +1,6 @@
 {
   "name": "sonar-scanner",
-  "version": "1.0.1",
+  "version": "3.0.3",
   "description": "Wrap sonar-scanner as a node module",
   "keywords": [
     "sonar",
