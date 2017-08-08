@@ -1,14 +1,19 @@
 {
   "name": "sonar-scanner",
-  "version": "1.0.1",
+  "version": "3.0.3",
   "description": "Wrap sonar-scanner as a node module",
   "keywords": [
     "sonar",
     "scanner"
   ],
   "main": "index.js",
+  "bin": {
+    "sonar-scanner": "index.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "node postinstall.js"
+
   },
   "repository": {
     "type": "git",
