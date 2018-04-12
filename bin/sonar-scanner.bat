@@ -4,7 +4,7 @@
 @REM   JAVA_HOME - location of a JDK home dir
 @REM
 @REM Optional ENV vars:
-@REM   SONAR_SCANNER_OPTS - parameters passed to the Java VM when running Sonar
+@REM   SONAR_SCANNER_OPTS - parameters passed to the Java VM when running the SonarQube Scanner
 
 @echo off
 
@@ -65,7 +65,10 @@ goto run
 
 set PROJECT_HOME=%CD%
 
-%JAVA_EXEC% -Djava.awt.headless=true %SONAR_SCANNER_DEBUG_OPTS% %SONAR_SCANNER_OPTS% -cp "%SONAR_SCANNER_HOME%\lib\sonar-scanner-cli-3.0.3.778.jar" "-Dscanner.home=%SONAR_SCANNER_HOME%" "-Dproject.home=%PROJECT_HOME%" org.sonarsource.scanner.cli.Main %*
+@REM remove trailing backslash, see https://groups.google.com/d/msg/sonarqube/wi7u-CyV_tc/3u9UKRmABQAJ
+IF %PROJECT_HOME:~-1% == \ SET PROJECT_HOME=%PROJECT_HOME:~0,-1%
+
+%JAVA_EXEC% -Djava.awt.headless=true %SONAR_SCANNER_DEBUG_OPTS% %SONAR_SCANNER_OPTS% -cp "%SONAR_SCANNER_HOME%\lib\sonar-scanner-cli-3.1.0.1141.jar" "-Dscanner.home=%SONAR_SCANNER_HOME%" "-Dproject.home=%PROJECT_HOME%" org.sonarsource.scanner.cli.Main %*
 if ERRORLEVEL 1 goto error
 goto end
 
