@@ -3,7 +3,7 @@
 # SonarQube Scanner Startup Script for Unix
 #
 # Optional ENV vars:
-#   SONAR_SCANNER_OPTS - Parameters passed to the Java VM when running SonarQube Scanner
+#   SONAR_SCANNER_OPTS - Parameters passed to the Java VM when running the SonarQube Scanner
 #   SONAR_SCANNER_DEBUG_OPTS - Extra parameters passed to the Java VM for debugging
 #   JAVA_HOME - Location of Java's installation
 
@@ -14,28 +14,21 @@ real_path () {
   while true; do
     cd "$(dirname "$target")"
     target=$(basename "$target")
-    link=$(readlink "$target")
-    test "$link" || break
-    target=$link
+    test -L "$target" || break
+    target=$(readlink "$target")
   done
 
   echo "$(pwd -P)/$target"
   )
 }
 
-script_path="$0"
-
-if [ -h "$script_path" ] ; then
-  # resolve recursively symlinks
-  script_path=$(real_path "$script_path")
-fi
-
+script_path=$(real_path "$0")
 sonar_scanner_home=$(dirname "$script_path")/..
 
 # make it fully qualified
 sonar_scanner_home=$(cd "$sonar_scanner_home" && pwd -P)
 
-jar_file=$sonar_scanner_home/lib/sonar-scanner-cli-3.0.3.778.jar
+jar_file=$sonar_scanner_home/lib/sonar-scanner-cli-3.1.0.1141.jar
 
 # check that sonar_scanner_home has been correctly set
 if [ ! -f "$jar_file" ] ; then
